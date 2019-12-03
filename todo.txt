@@ -1,0 +1,7 @@
+TODO
+
+-> Redifine algorithms with self written recursive_iterator.
+    {unable to iterate through root --- using fs::recursive_directory_iterators}
+    
+    
+-> make issue raisers look cooler.
