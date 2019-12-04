@@ -1,1 +1,4 @@
- 
+ISSUES
+
+
+    ****not dealing with permission denied throws as expected.****
