@@ -25,7 +25,8 @@ struct searching_algorithm
   {
       if (!first_time)
       {
-        std::cout<<"\n\nDidn't find anything...\n\n";
+        std::cout<<"\n\nDidn't find anything....\n\n";
+        exit(0);
       }
   }
 };
