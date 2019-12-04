@@ -10,7 +10,7 @@
 namespace fs = boost::filesystem;
 
 
-
+//parent class
 
 struct searching_algorithm
 {
