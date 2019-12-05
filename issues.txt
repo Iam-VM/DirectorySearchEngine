@@ -1,4 +1,4 @@
 ISSUES
 
 
-    ****not dealing with permission denied throws as expected.****
+    ->not dealing with permission denied throws as expected. [CURED]
