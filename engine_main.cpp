@@ -52,6 +52,13 @@ int main(int argc, char* argv[]){
     std::cerr<<main_description<<std::endl;
     exit(0);
   }
+
+  if (argc<2)
+  {
+    std::cout<<"dse: No options used."<<std::endl<<std::endl<<std::endl<<main_description<<std::endl;
+    exit(0);
+  }
+
   check_options_and_export(::options_value_map, search_keyword, base_directories, formats_list, main_description);
   return 0;
 }
