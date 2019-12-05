@@ -31,7 +31,8 @@ void check_options_and_export(po::variables_map& options_value_map,std::string s
     dependent_variables.insert({"file_mode", true});
 
     if (formats_list.size() == 0){
-      dependent_variables["format_specified"] = false;
+      std::cout<<"dse: --format used without arguments."<<std::endl<<std::endl<<std::endl<<main_description<<std::endl<<std::endl;
+      exit(0);
     }
   }
   else{
@@ -98,8 +99,8 @@ void filter_base_directories(po::variables_map options_value_map, std::vector<st
   ::filtered_base_directories.clear();
   if (!options_value_map.count("base"))
   {
-    ::filtered_base_directories.push_back("/home");
-    std::cout<<"\n\nselected default base directory /home ..."<<std::endl;
+    ::filtered_base_directories.push_back("/");
+    std::cout<<"\n\ndse: Selected default base directory / [root] ..."<<std::endl<<std::endl<<std::endl;
   }
   else
   {
@@ -111,7 +112,7 @@ void filter_base_directories(po::variables_map options_value_map, std::vector<st
       }
       else
       {
-        std::cout<<"Seems Like "<<i<<" does not exist...\ncannot search in "<<i<<std::endl<<std::endl;
+        std::cout<<"dse: Seems Like "<<i<<" does not exist. Cannot search in "<<i<<std::endl<<std::endl<<std::endl;
       }
     }
     if (::filtered_base_directories.size() == 0)
@@ -136,13 +137,14 @@ void filter_base_directories(po::variables_map options_value_map, std::vector<st
       std::cin.clear();
       std::cout<<"\n\nEnter base directory path  :  ";
       scanf("%s", base_dir);
+      std::cout<<std::endl<<std::endl;
       base_dir_str = base_dir;
       ::filtered_base_directories.push_back(base_dir_str);
       delete base_dir;
     }
     else
     {
-      std::cout<<"\n\n\n !!! User chose to terminate.. \n\nterminating DSE...\n\n";
+      std::cout<<"\n\n\ndse: User chose to terminate. Terminating DSE. \n\n";
       exit(0);
     }
     filter_base_directories(options_value_map, ::filtered_base_directories);
