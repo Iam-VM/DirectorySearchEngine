@@ -10,7 +10,7 @@
 namespace fs = boost::filesystem;
 
 
-//parent class
+
 
 struct searching_algorithm
 {
@@ -25,8 +25,7 @@ struct searching_algorithm
   {
       if (!first_time)
       {
-        std::cout<<"\n\nDidn't find anything....\n\n";
-        exit(0);
+        std::cout<<"\n\ndse: Found nothing.\n\n";
       }
   }
 };
@@ -71,9 +70,13 @@ struct key_file_dir_for : searching_algorithm
                   }
                 }
               }
-              it.increment(ec);
+              try
+              {
+                ++it;
+              }
+              catch(std::exception& e){it.no_push();++it;}
             }
-            catch(std::exception& e){}
+            catch(std::exception& e){it.no_push();it.increment(ec);}
           }
         }
         else
@@ -122,9 +125,13 @@ struct key_file_dir_for : searching_algorithm
               }
             }
         }
-        it.increment(ec);
+        try
+        {
+          ++it;
+        }
+        catch(std::exception& e){it.no_push();++it;}
       }
-      catch(std::exception& e){}
+      catch(std::exception& e){it.no_push();it.increment(ec);}
     }
   }
 }
@@ -180,9 +187,13 @@ struct key_file_dir_nofor : searching_algorithm
               }
             }
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -225,9 +236,13 @@ struct key_file_dir_nofor : searching_algorithm
               }
             }
         }
-        it.increment(ec);
+        try
+        {
+          ++it;
+        }
+        catch(std::exception& e){it.no_push();++it;}
       }
-      catch(std::exception& e){}
+      catch(std::exception& e){it.no_push();it.increment(ec);}
     }
   }
 }
@@ -276,9 +291,13 @@ struct key_file_nodir_for : searching_algorithm
               }
             }
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -315,9 +334,13 @@ struct key_file_nodir_for : searching_algorithm
               }
             }
         }
-        it.increment(ec);
+        try
+        {
+          ++it;
+        }
+        catch(std::exception& e){it.no_push();++it;}
       }
-      catch(std::exception& e){}
+      catch(std::exception& e){it.no_push();it.increment(ec);}
     }
   }
 }
@@ -365,9 +388,13 @@ struct key_file_nodir_nofor : searching_algorithm
               system(to_print.c_str());
             }
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -401,9 +428,13 @@ struct key_file_nodir_nofor : searching_algorithm
               system(to_print.c_str());
             }
         }
-        it.increment(ec);
+        try
+        {
+          ++it;
+        }
+        catch(std::exception& e){it.no_push();++it;}
       }
-      catch(std::exception& e){}
+      catch(std::exception& e){it.no_push();it.increment(ec);}
     }
   }
 }
@@ -447,9 +478,13 @@ struct key_nofile_dir_nofor : searching_algorithm
               system(to_print.c_str());
             }
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -483,9 +518,13 @@ struct key_nofile_dir_nofor : searching_algorithm
               system(to_print.c_str());
             }
         }
-        it.increment(ec);
+        try
+        {
+          ++it;
+        }
+        catch(std::exception& e){it.no_push();++it;}
       }
-      catch(std::exception& e){}
+      catch(std::exception& e){it.no_push();it.increment(ec);}
     }
   }
 }
@@ -534,11 +573,19 @@ struct nokey_file_dir_for : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  it->path().extension().string() + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -570,11 +617,19 @@ struct nokey_file_dir_for : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  it->path().extension().string() + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -622,11 +677,19 @@ struct nokey_file_dir_nofor : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  it->path().extension().string() + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -658,11 +721,19 @@ struct nokey_file_dir_nofor : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  it->path().extension().string() + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -704,11 +775,19 @@ struct nokey_file_nodir_nofor : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  it->path().extension().string() + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -735,11 +814,19 @@ struct nokey_file_nodir_nofor : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  it->path().extension().string() + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -781,11 +868,19 @@ struct nokey_nofile_dir_nofor : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  "Directory" + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
@@ -813,11 +908,19 @@ struct nokey_nofile_dir_nofor : searching_algorithm
               to_print = "printf '\e[38;2;232;234;246m " + it->path().stem().string() + "\e[0m, " + "\e[38;2;159;168;218m " + it->path().string() + "\e[0m, " + "\e[38;2;92;107;192m " +  "Directory" + "\e[0m" + "\n\n'";
               system(to_print.c_str());
             }
-            it.increment(ec);
+            try
+            {
+              ++it;
+            }
+            catch(std::exception& e){it.no_push();++it;}
           }
-          it.increment(ec);
+          try
+          {
+            ++it;
+          }
+          catch(std::exception& e){it.no_push();++it;}
         }
-        catch(std::exception& e){}
+        catch(std::exception& e){it.no_push();it.increment(ec);}
       }
     }
   }
