@@ -16,10 +16,4 @@
     
     To show Usage Description.
     
-    
-
-# FUTURE_PROMISES
-
-    # cse_CONSOLE_SEARCH_ENGINE
-
-    ->HTTP mode [--http] {takes and arg and searches in internet}
+   
