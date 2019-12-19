@@ -99,8 +99,8 @@ void filter_base_directories(po::variables_map options_value_map, std::vector<st
   ::filtered_base_directories.clear();
   if (!options_value_map.count("base"))
   {
-    ::filtered_base_directories.push_back("/");
-    std::cout<<"\n\ndse: Selected default base directory / [root] ..."<<std::endl<<std::endl<<std::endl;
+    ::filtered_base_directories.push_back(".");
+    std::cout<<"Searching in current directory..."<<std::endl<<std::endl;
   }
   else
   {
