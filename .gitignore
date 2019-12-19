@@ -1,5 +1,5 @@
 # Prerequisites
-*.d
+/*.d
 
 # Compiled Object files
 *.slo
@@ -33,7 +33,7 @@
 
 
 # Installer
-/*.sh
+*.sh
 
 #others
 /dse
